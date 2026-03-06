@@ -1,5 +1,6 @@
 using UnityEngine;
 using Project.Infrastructure.DependencyInjection;
+using Project.Core.EventBus;
 
 public class ProjectBootstrap : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class ProjectBootstrap : MonoBehaviour
 
     private void InitializeServices()
     {
+        var eventBus = new EventBus();
+
+        Container.Register<IEventBus>(eventBus);
+
         Debug.Log("Services initialized");
     }
 }
