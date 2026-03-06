@@ -1,16 +1,21 @@
 using UnityEngine;
+using Project.Infrastructure.DependencyInjection;
 
 public class ProjectBootstrap : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static ServiceContainer Container { get; private set; }
+
+    private void Awake()
     {
-        
+        DontDestroyOnLoad(gameObject);
+
+        Container = new ServiceContainer();
+
+        InitializeServices();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void InitializeServices()
     {
-        
+        Debug.Log("Services initialized");
     }
 }
