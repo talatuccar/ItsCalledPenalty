@@ -4,6 +4,7 @@ using Project.Infrastructure.DependencyInjection;
 using Project.Infrastructure.Services;
 using UnityEngine;
 
+
 public class ProjectBootstrap : MonoBehaviour
 {
     public static ServiceContainer Container { get; private set; }
@@ -25,6 +26,9 @@ public class ProjectBootstrap : MonoBehaviour
         var sceneLoader = new SceneLoader();
         Container.Register<ISceneLoader>(sceneLoader);
 
+        var stateMachine = new GameStateMachine();
+        Container.Register<GameStateMachine>(stateMachine);
+
         Debug.Log("Services initialized");
     }
 
@@ -32,8 +36,13 @@ public class ProjectBootstrap : MonoBehaviour
     {
 
         var sceneLoader = Container.Get<ISceneLoader>();
-       
-        await UniTask.Delay(500);
-        await sceneLoader.LoadScene(SceneNames.Menu);
+        var stateMachine = Container.Get<GameStateMachine>();
+
+        
+        await UniTask.Yield();
+        await sceneLoader.LoadScene(SceneNames.Gameplay);
+
+        stateMachine.ChangeState(new GameplayState());
+
     }
 }
