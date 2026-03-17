@@ -11,6 +11,12 @@ public class ProjectBootstrap : MonoBehaviour
 
     private void Awake()
     {
+        if (Container != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         DontDestroyOnLoad(gameObject);
 
         Container = new ServiceContainer();
