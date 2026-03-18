@@ -7,6 +7,7 @@ public class SceneInstaller : MonoBehaviour
     //[SerializeField] private KickSoundPlayer soundPlayer;
     [SerializeField]
     private PenaltyManager penaltyManager;
+    [SerializeField] private GoalkeeperController goalkeeperController;
 
     private void Start()
     {
@@ -23,5 +24,6 @@ public class SceneInstaller : MonoBehaviour
 
         ballKick.Construct(eventBus);
         penaltyManager.Construct(eventBus);
+        goalkeeperController.Construct(eventBus);
     }
 }
