@@ -6,7 +6,7 @@ public class ShotParameterProvider : MonoBehaviour    // it manages sliders
     [SerializeField] private SliderOscillator directionOscillator;
     [SerializeField] private SliderOscillator heightOscillator;
 
-    public enum SelectionState { Direction, Height, Finished }
+    public enum SelectionState { Direction, Height, Timing, Finished } // Timing eklendi
     private SelectionState _currentSelection = SelectionState.Direction;
 
    
@@ -17,7 +17,7 @@ public class ShotParameterProvider : MonoBehaviour    // it manages sliders
         heightOscillator.Stop();
     }
 
-  
+
     public bool AdvanceSelection()
     {
         switch (_currentSelection)
@@ -26,19 +26,24 @@ public class ShotParameterProvider : MonoBehaviour    // it manages sliders
                 directionOscillator.Stop();
                 heightOscillator.StartMoving();
                 _currentSelection = SelectionState.Height;
-                return false;
+                return false; // Sadece Direction bitti, halka açýlmamalý.
 
             case SelectionState.Height:
                 heightOscillator.Stop();
+                _currentSelection = SelectionState.Timing; // Ýþte þimdi Timing'e geçtik!
+                return false; // Hala bir týk daha bekliyoruz (Halka için).
+
+            case SelectionState.Timing:
                 _currentSelection = SelectionState.Finished;
-                return true;
+                return true; // Her þey bitti, þut çekilebilir.
 
             default:
                 return true;
         }
     }
 
-
+    // Hangi aþamada olduðumuzu dýþarýya söyleyen küçük bir yardýmcý:
+    public SelectionState GetCurrentState() => _currentSelection;
     public ShotData GetShotData()
     {
         
