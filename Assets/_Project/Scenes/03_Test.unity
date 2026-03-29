@@ -2289,6 +2289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: barajcapsule (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4840291278355308967, guid: a4736153bc97d454e946744a4f5550b1, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6796,6 +6800,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: barajcapsule (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4840291278355308967, guid: a4736153bc97d454e946744a4f5550b1, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7351,6 +7359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: barajcapsule (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4840291278355308967, guid: a4736153bc97d454e946744a4f5550b1, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7800,6 +7812,9 @@ MonoBehaviour:
   timingRing: {fileID: 1803554729}
   playerAnimator: {fileID: 5866666021086258610}
   broadcaster: {fileID: 1196566376}
+  currentMode: 1
+  penaltySettings: {fileID: 11400000, guid: 067573ac7665d02468f66983d0ee3e58, type: 2}
+  freeKickSettings: {fileID: 11400000, guid: baddea967b7d56442921f3eca51b787d, type: 2}
 --- !u!4 &1029785450
 Transform:
   m_ObjectHideFlags: 0
@@ -15656,7 +15671,7 @@ GameObject:
   - component: {fileID: 1196566376}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Goalkeeper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20275,6 +20290,10 @@ PrefabInstance:
     - target: {fileID: 4840291278355308967, guid: a4736153bc97d454e946744a4f5550b1, type: 3}
       propertyPath: m_Name
       value: barajcapsule
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840291278355308967, guid: a4736153bc97d454e946744a4f5550b1, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

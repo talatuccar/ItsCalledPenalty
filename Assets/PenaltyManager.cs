@@ -18,6 +18,11 @@ public class PenaltyManager : MonoBehaviour
     //private Vector2 _finalParameters;
     ShotData _finalShot;
     private IEventBus _eventBus;
+    public enum GameMode { Penalty, FreeKick }
+    [Header("Game Mode Settings")]
+    public GameMode currentMode;
+    [SerializeField] private ShotSettings penaltySettings;
+    [SerializeField] private ShotSettings freeKickSettings;
 
     public void Construct(IEventBus eventBus)
     {
@@ -58,18 +63,21 @@ public class PenaltyManager : MonoBehaviour
     {
         _finalShot = parameterProvider.GetShotData();
 
-        // Halkanýn o anki deðerini al (Örn: 0.85f)
+      
         _capturedTimingScore = timingRing.Accuracy;
+
+       
 
         playerAnimator.SetTrigger("Kick");
         inputHandler.enabled = false;
-        timingRing.Deactivate(); // Vuruþ kararý verildiði an halkayý kapatabilirsin
+        timingRing.Deactivate(); 
     }
 
     private void HandleBallHit()
     {
-        // Artýk event fýrlatýrken yakaladýðýmýz timing deðerini de gönderiyoruz
-        _eventBus.Publish(new BallKickedEvent(_finalShot, _capturedTimingScore));
+        ShotSettings activeSettings = (currentMode == GameMode.Penalty) ? penaltySettings : freeKickSettings;
+   
+        _eventBus.Publish(new BallKickedEvent(_finalShot, _capturedTimingScore, activeSettings));
     }
 
     private void OnDestroy()

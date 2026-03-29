@@ -89,10 +89,10 @@ public class BallKickController : MonoBehaviour
         // 2. Dinamik Hata Hesaplama
         // Yatay: Orta noktadan (0.5) ne kadar uzaktaysa o yöne saptýr
         float horizontalDir = e.ShotData.Horizontal - 0.5f;
-        float horizontalOffset = horizontalDir * horizontalErrorPower * errorFactor;
+        float horizontalOffset = horizontalDir * e.Settings.horizontalErrorPower * errorFactor;
 
-        // Dikey: Yukarýyý hedeflediyse daha da yukarý saptýr
-        float verticalOffset = (e.ShotData.Vertical * verticalErrorPower * errorFactor) + (autoLiftAmount * errorFactor);
+        float verticalOffset = (e.ShotData.Vertical * e.Settings.verticalErrorPower * errorFactor)
+                               + (e.Settings.autoLiftAmount * errorFactor);
 
         // 3. Final Noktasý
         Vector3 finalTarget = baseTarget + new Vector3(0, verticalOffset, horizontalOffset);
