@@ -9,6 +9,8 @@ public class SceneInstaller : MonoBehaviour
     private PenaltyManager penaltyManager;
     [SerializeField] private GoalkeeperController goalkeeperController;
 
+    [SerializeField] private WallSystemController wallSystemController;
+
     private void Start()
     {
         if (ProjectBootstrap.Container == null)
@@ -25,5 +27,6 @@ public class SceneInstaller : MonoBehaviour
         ballKick.Construct(eventBus);
         penaltyManager.Construct(eventBus);
         goalkeeperController.Construct(eventBus);
+        wallSystemController.Construct(eventBus);
     }
 }

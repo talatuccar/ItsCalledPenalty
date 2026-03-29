@@ -5,9 +5,9 @@ public class BallKickController : MonoBehaviour
 {
     [SerializeField] private Rigidbody ballRigidbody;
     [Header("Force Settings")]
-    [SerializeField] private float horizontalMultiplier = 10f;
-    [SerializeField] private float verticalMultiplier = 15f;
-    [SerializeField] private float forwardForce = 25f;
+    //[SerializeField] private float horizontalMultiplier = 10f;
+    ////[SerializeField] private float verticalMultiplier = 15f;
+    //[SerializeField] private float forwardForce = 25f;
 
     [SerializeField] private BoxCollider goalTrigger;
     [SerializeField] private float flightTime = 1.5f;
@@ -74,45 +74,7 @@ public class BallKickController : MonoBehaviour
         _eventBus?.Unsubscribe<BallKickedEvent>(OnBallKicked);
     }
 
-    //private void OnBallKicked(BallKickedEvent e)
-    //{
-    //    Bounds b = goalTrigger.bounds;
-
-    //    // 1. Orijinal Hedef (Sliderlardan gelen 0-1 arasý deðer)
-    //    // Horizontal: 0 (Sol), 0.5 (Orta), 1 (Sað)
-    //    // Vertical: 0 (Yer), 1 (Tavan)
-    //    float targetZ = Mathf.Lerp(b.max.z, b.min.z, e.ShotData.Horizontal);
-    //    float targetY = Mathf.Lerp(b.min.y, b.max.y, e.ShotData.Vertical);
-    //    Vector3 baseTarget = new Vector3(b.center.x, targetY, targetZ);
-
-    //    // 2. Hata Katsayýsý (1 = En kötü, 0 = Mükemmel)
-    //    float errorFactor = 1f - e.TimingScore;
-
-    //    // 3. YÖNLÜ SAPMA HESABI
-    //    // Mantýk: Hedef merkezden ne kadar uzaksa, hata o yöne doðru o kadar büyür.
-
-    //    // Yatay Sapma (Z ekseni):
-    //    // (e.ShotData.Horizontal - 0.5f) -> Sol için negatif, Sað için pozitif deðer verir.
-    //    float horizontalDirection = e.ShotData.Horizontal - 0.5f;
-    //    float horizontalError = horizontalDirection * horizontalErrorMultiplier * errorFactor; // 10f sapma þiddeti
-
-    //    // Dikey Sapma (Y ekseni):
-    //    // Oyuncu yukarýyý (1.0) hedefledikçe hata payý topu daha da yukarý iter.
-    //    float verticalError = e.ShotData.Vertical * verticalErrorMultiplier * errorFactor; // 5f sapma þiddeti
-
-    //    // Sabit bir "kötü vuruþ" yükselmesi de ekleyelim (Topun dibine girmiþ gibi)
-    //    verticalError += 1.5f * errorFactor;
-
-    //    // 4. Final Hedef
-    //    // Mevcut hedefe bu "abartýlmýþ" hatalarý ekliyoruz
-    //    Vector3 finalTarget = baseTarget + new Vector3(0, verticalError, horizontalError);
-
-    //    // 5. Fýrlatma
-    //    ballRigidbody.isKinematic = false;
-    //    Vector3 velocity = CalculateVelocity(finalTarget, flightTime);
-    //    ballRigidbody.linearVelocity = velocity;
-    //}
-
+   
     private void OnBallKicked(BallKickedEvent e)
     {
         Bounds b = goalTrigger.bounds;

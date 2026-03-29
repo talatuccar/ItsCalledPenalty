@@ -23,7 +23,7 @@ public class PenaltyManager : MonoBehaviour
     {
         _eventBus = eventBus;
     }
-    private void Start()
+    private void OnEnable()
     {
         parameterProvider.Initialize();
 
